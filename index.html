@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md. Monjurul Haq Shakib | Biochemistry &amp; Molecular Biology</title>
+  <meta name="description" content="Md. Monjurul Haq Shakib, MS thesis researcher in Biochemistry and Molecular Biology at SUST. Research in multi-omics, transcriptomics, mutational analysis, immune modulation and machine learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       THEME — edit these values to restyle the whole site
+       ========================================================= */
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f4f9fd;        /* pale sky section background */
+      --ink: #0b1220;            /* near-black text */
+      --muted: #526072;          /* secondary text */
+      --sky: #38bdf8;            /* bright sky blue (decoration) */
+      --sky-deep: #0369a1;       /* deep sky blue (links/text, readable on white) */
+      --sky-pale: #e0f2fe;       /* tag backgrounds */
+      --line: #e3ebf2;
+      --radius: 16px;
+      --max: 1100px;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; font-size: 16px; }
+    h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; line-height: 1.2; letter-spacing: -0.01em; }
+    a { color: var(--sky-deep); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    em.sp { font-style: italic; }
+
+    /* ---------- Navigation ---------- */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: "Space Grotesk", sans-serif; font-weight: 700; color: #0ea5e9; font-size: 1.35rem; }
+    .brand:hover { text-decoration: none; }
+    .brand svg { width: 26px; height: 26px; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--ink); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; }
+    .nav-links a:hover { color: var(--sky-deep); text-decoration: none; }
+    .menu-btn { display: none; background: none; border: 0; font-size: 1.5rem; cursor: pointer; color: var(--ink); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 96px 0; }
+    section.soft { background: var(--bg-soft); }
+    .eyebrow { font-family: var(--mono); font-size: 0.78rem; color: var(--sky-deep); letter-spacing: 0.06em; margin-bottom: 10px; }
+    .eyebrow::before { content: "› "; color: var(--sky); }
+    section h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); margin-bottom: 40px; }
+
+    /* ---------- Hero ---------- */
+    #home {
+      position: relative; overflow: hidden; padding: 110px 0 90px;
+      /* faint hexagon (benzene-ring) lattice */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-opacity='0.13' stroke-width='1'%3E%3Cpath d='M28 0 56 16.2V48.5L28 64.7 0 48.5V16.2Z'/%3E%3Cpath d='M28 64.7V97'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    #home::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #fff 35%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0.2)); pointer-events: none; }
+    .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
+    .hero .tagline { font-family: var(--mono); font-size: 0.85rem; color: var(--sky-deep); background: var(--sky-pale); display: inline-block; padding: 5px 12px; border-radius: 999px; margin-bottom: 22px; }
+    .hero h1 { font-size: clamp(1.3rem, 3.6vw, 2.6rem); margin-bottom: 14px; color: var(--sky-deep); white-space: nowrap; }
+    .hero .role { font-size: 1.08rem; color: var(--muted); margin-bottom: 24px; }
+    .hero p.lead { max-width: 580px; margin-bottom: 32px; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 0.92rem; border: 1.5px solid var(--ink); transition: transform .15s, background .15s; }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn.primary { background: var(--ink); color: #fff; }
+    .btn.primary:hover { background: var(--sky-deep); border-color: var(--sky-deep); }
+    .btn.ghost { color: var(--ink); background: #fff; }
+
+    .photo-frame { position: relative; justify-self: center; width: min(340px, 100%); aspect-ratio: 1; }
+    .photo-frame img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid #fff; box-shadow: 0 20px 50px rgba(3,105,161,0.18); }
+    .photo-frame .orbit { position: absolute; inset: -22px; border: 1.5px dashed var(--sky); border-radius: 50%; animation: spin 40s linear infinite; }
+    .photo-frame .orbit::before, .photo-frame .orbit::after { content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--sky); }
+    .photo-frame .orbit::before { top: 14%; left: 8%; }
+    .photo-frame .orbit::after { bottom: 6%; right: 22%; background: var(--ink); width: 9px; height: 9px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- DNA helix divider ---------- */
+    .helix { display: block; width: 100%; height: 70px; }
+
+    /* ---------- Cards & grids ---------- */
+    .grid { display: grid; gap: 20px; }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .card:hover { border-color: var(--sky); box-shadow: 0 10px 30px rgba(56,189,248,0.12); transform: translateY(-3px); }
+    .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.94rem; }
+    .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--sky-pale); display: grid; place-items: center; margin-bottom: 16px; }
+    .icon svg { width: 24px; height: 24px; stroke: var(--sky-deep); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .meta { font-family: var(--mono); font-size: 0.78rem; color: var(--sky-deep); margin-bottom: 8px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { background: var(--sky-pale); color: var(--sky-deep); font-size: 0.78rem; font-weight: 500; padding: 4px 12px; border-radius: 999px; }
+    .tag.dark { background: var(--ink); color: #fff; }
+
+    /* ---------- About ---------- */
+    .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; }
+    .about p { margin-bottom: 16px; }
+    .facts { list-style: none; border-top: 1px solid var(--line); }
+    .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 0.94rem; }
+    .facts li span:first-child { color: var(--muted); }
+    .facts li span:last-child { text-align: right; font-weight: 500; }
+
+    /* ---------- Timeline ---------- */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--sky), var(--line)); }
+    .t-item { position: relative; margin-bottom: 34px; }
+    .t-item:last-child { margin-bottom: 0; }
+    .t-item::before { content: ""; position: absolute; left: -30px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--sky); }
+    .t-item h3 { font-size: 1.1rem; }
+    .t-item p { color: var(--muted); font-size: 0.94rem; }
+
+    /* ---------- Skills ---------- */
+    .skill-group h3 { font-size: 1rem; margin-bottom: 4px; }
+    .skill-group .tags { margin-top: 10px; }
+
+    /* ---------- Publications ---------- */
+    .pub { display: grid; grid-template-columns: 64px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+    .pub:last-of-type { border-bottom: 1px solid var(--line); }
+    .pub .year { font-family: var(--mono); color: var(--sky-deep); font-size: 0.9rem; padding-top: 2px; }
+    .pub .title { font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
+    .pub .authors { color: var(--muted); font-size: 0.92rem; }
+    .pub .authors b { color: var(--ink); }
+    .pub .venue { font-style: italic; font-size: 0.92rem; margin-top: 2px; }
+    .pub .links { margin-top: 8px; font-size: 0.86rem; font-family: var(--mono); }
+
+    /* ---------- Contact ---------- */
+    #contact { background: var(--ink); color: #fff; text-align: center; }
+    #contact .eyebrow { color: var(--sky); }
+    #contact h2 { color: #fff; margin-bottom: 16px; }
+    #contact p { color: #b7c3d3; max-width: 560px; margin: 0 auto 30px; }
+    #contact .btn.primary { background: var(--sky); border-color: var(--sky); color: var(--ink); }
+    #contact .btn.primary:hover { background: #fff; border-color: #fff; }
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .socials a { color: #fff; border: 1px solid #2a3547; padding: 9px 20px; border-radius: 999px; font-size: 0.9rem; transition: border-color .2s, color .2s; }
+    .socials a:hover { border-color: var(--sky); color: var(--sky); text-decoration: none; }
+    footer { background: var(--ink); color: #7d8a9c; text-align: center; padding: 0 0 36px; font-size: 0.82rem; font-family: var(--mono); }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 880px) {
+      .hero, .about, .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .hero { gap: 56px; }
+      .photo-frame { width: 240px; order: -1; }
+      #home::after { background: rgba(255,255,255,0.75); }
+      .menu-btn { display: block; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 14px 24px; }
+      .hero h1 { font-size: 6.2vw; }
+      section { padding: 72px 0; }
+      .pub { grid-template-columns: 1fr; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="wrap">
+      <a href="#home" class="brand" aria-label="Home">
+        <!-- small DNA mark -->
+        <svg viewBox="0 0 32 32" fill="none" stroke-width="2.2" stroke-linecap="round">
+          <path d="M9 3c0 8 14 8 14 13S9 21 9 29" stroke="#0b1220"/>
+          <path d="M23 3c0 8-14 8-14 13s14 5 14 13" stroke="#38bdf8"/>
+          <path d="M11 7h10M12 25h8" stroke="#94a3b8" stroke-width="1.6"/>
+        </svg>
+        Shakib
+      </a>
+      <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+      <ul class="nav-links" onclick="this.classList.remove('open')">
+        <li><a href="#research">Research</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HOME ===================== -->
+    <section id="home">
+      <div class="wrap hero">
+        <div>
+          <span class="tagline">5′-ATG · wet lab + in silico · TAA-3′</span>
+          <h1>Md. Monjurul Haq Shakib</h1>
+          <p class="role">MS Thesis Student · Biochemistry and Molecular Biology<br>Shahjalal University of Science and Technology (SUST)</p>
+          <p class="lead">
+            I study the molecular mechanisms of disease by combining laboratory work with
+            bioinformatics, from gene expression and mutational landscapes to immune-related
+            biomarkers and machine learning.
+          </p>
+          <div class="btns">
+            <a href="cv.pdf" class="btn primary" target="_blank">Download CV ↓</a>
+            <a href="#contact" class="btn ghost">Get in touch</a>
+          </div>
+        </div>
+        <div class="photo-frame">
+          <div class="orbit" aria-hidden="true"></div>
+          <img src="profile.jpg" alt="Portrait of Md. Monjurul Haq Shakib">
+        </div>
+      </div>
+    </section>
+
+    <svg class="helix" id="helix" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+    <!-- ===================== RESEARCH INTERESTS ===================== -->
+    <section id="research">
+      <div class="wrap">
+        <p class="eyebrow">01 / research interests</p>
+        <h2>What I work on</h2>
+        <div class="grid three">
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></div>
+            <h3>Multi-Omics</h3>
+            <p>Integrating genomic, transcriptomic and other molecular layers to get a fuller picture of disease biology.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/><path d="M6 9.5v5M12 9.5v5M18 9.5v5"/></svg></div>
+            <h3>Transcriptomics</h3>
+            <p>Gene expression analysis to identify differentially expressed genes, hub genes and candidate biomarkers.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="14" cy="12" r="2.6" fill="#e0f2fe"/></svg></div>
+            <h3>Mutational Insights</h3>
+            <p>Exploring mutational landscapes and selection pressure to understand how proteins evolve and function.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21v-8M12 13 6 5M12 13l6-8M4 7l2-2M20 7l-2-2"/></svg></div>
+            <h3>Immune Modulation</h3>
+            <p>Immune-related genes and pathways and their role in disease onset and diagnosis.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="m7 7 3.4 3.6M7 17l3.4-3.6M13.6 10.6 17 7M13.6 13.4 17 17"/></svg></div>
+            <h3>Machine &amp; Deep Learning</h3>
+            <p>Applying ML and DL models to biological data for classification, prediction and pattern discovery.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></div>
+            <h3>Wet Lab + In Silico</h3>
+            <p>Connecting bench techniques like PCR and qPCR with computational analysis in a single workflow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT + EDUCATION ===================== -->
+    <section id="about" class="soft">
+      <div class="wrap">
+        <p class="eyebrow">02 / about</p>
+        <h2>About &amp; Education</h2>
+        <div class="about">
+          <div>
+            <p>
+              I am a Biochemistry and Molecular Biology graduate working as an MS thesis researcher
+              in the Department of Biochemistry and Molecular Biology at SUST, with a strong interest
+              in bioinformatics and molecular biology.
+            </p>
+            <p>
+              My experience includes analyzing biological data, gene expression studies, and applying
+              computational tools to understand the molecular mechanisms of disease. I am also skilled
+              in research design, data interpretation and laboratory techniques, and I enjoy integrating
+              wet-lab and in-silico approaches.
+            </p>
+            <p>I am motivated, detail-oriented and eager to contribute to innovative research and scientific advancement.</p>
+            <ul class="facts">
+              <li><span>Current role</span><span>MS Thesis Student</span></li>
+              <li><span>Department</span><span>Biochemistry &amp; Molecular Biology, SUST</span></li>
+              <li><span>Languages</span><span>Bengali (native) · English (fluent)</span></li>
+            </ul>
+          </div>
+          <div class="timeline">
+            <div class="t-item">
+              <p class="meta">Ongoing</p>
+              <h3>MS in Biochemistry and Molecular Biology</h3>
+              <p>Shahjalal University of Science and Technology, Sylhet<br>CGPA 3.82 / 4.00</p>
+            </div>
+            <div class="t-item">
+              <p class="meta">Feb 2020 – Jun 2025</p>
+              <h3>BSc in Biochemistry and Molecular Biology</h3>
+              <p>Shahjalal University of Science and Technology, Sylhet<br>CGPA 3.66 / 4.00</p>
+            </div>
+            <div class="t-item">
+              <p class="meta">2019</p>
+              <h3>Higher Secondary Certificate (Science)</h3>
+              <p>Dhaka College, Dhaka · GPA 4.83 / 5.00</p>
+            </div>
+            <div class="t-item">
+              <p class="meta">2017</p>
+              <h3>Secondary School Certificate (Science)</h3>
+              <p>Ideal School and College, Motijheel, Dhaka · GPA 5.00 / 5.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects">
+      <div class="wrap">
+        <p class="eyebrow">03 / projects</p>
+        <h2>Research Projects</h2>
+        <div class="grid two">
+          <!-- EDIT: add a sentence on methods or findings to each card when you can -->
+          <div class="card">
+            <p class="meta">2026</p>
+            <h3>Shared hub genes between HIV infection and peripheral T-cell lymphoma</h3>
+            <p>Identification of shared candidate hub genes between HIV infection and peripheral T-cell lymphoma through an integrated bioinformatics approach.</p>
+            <div class="tags"><span class="tag">Integrated bioinformatics</span><span class="tag">Hub genes</span><span class="tag">HIV</span><span class="tag">PTCL</span></div>
+          </div>
+          <div class="card">
+            <p class="meta">2026</p>
+            <h3>Immune-related hub genes in early-stage hepatocellular carcinoma</h3>
+            <p>Bioinformatics-based identification of candidate immune-related hub genes and evaluation of their diagnostic potential in early-stage HCC.</p>
+            <div class="tags"><span class="tag">Transcriptomics</span><span class="tag">Hub genes</span><span class="tag">Biomarkers</span></div>
+          </div>
+          <div class="card">
+            <p class="meta">2026</p>
+            <h3>Glycemic abnormalities and urinary findings among professional drivers</h3>
+            <p>An opportunistic cross-sectional study of glycemic abnormalities and associated urinary findings in professional drivers.</p>
+            <div class="tags"><span class="tag">Public health</span><span class="tag">Cross-sectional</span></div>
+          </div>
+          <div class="card">
+            <p class="meta">2026</p>
+            <h3>Occupational health screening in road-safety surveillance</h3>
+            <p>Cross-sectional evidence from professional drivers in Bangladesh on integrating occupational health screening into road-safety surveillance.</p>
+            <div class="tags"><span class="tag">Occupational health</span><span class="tag">Surveillance</span></div>
+          </div>
+          <div class="card">
+            <p class="meta">2025 · Undergraduate project</p>
+            <h3>Selection pressure and mutational landscape of the HIV-1 Vpr protein</h3>
+            <p>Bioinformatic analysis of the mutational landscape and evolution of HIV-1 Vpr. Presented as a poster at ICLS 2025, Sylhet.</p>
+            <div class="tags"><span class="tag">Mutational analysis</span><span class="tag">Evolution</span><span class="tag dark">Poster</span></div>
+          </div>
+          <div class="card">
+            <p class="meta">2024</p>
+            <h3>Random blood glucose screening among professional drivers</h3>
+            <p>Opportunistic screening in northeastern Bangladesh assessing undiagnosed diabetes and health awareness. Published in <em>PLOS Global Public Health</em>.</p>
+            <div class="tags"><span class="tag">Diabetes</span><span class="tag">Screening</span><span class="tag dark">Published</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PUBLICATIONS ===================== -->
+    <section id="publications" class="soft">
+      <div class="wrap">
+        <p class="eyebrow">04 / publications &amp; presentations</p>
+        <h2>Publications</h2>
+
+        <div class="pub">
+          <div class="year">2025</div>
+          <div>
+            <p class="title">Opportunistic random blood glucose screening among professional drivers in northeastern Bangladesh: Assessing undiagnosed diabetes and health awareness</p>
+            <p class="authors">Arman MS, Sarker MN, Ahmed J, Trisha AD, Rahman S, <b>Shakib MMH</b>, et al.</p>
+            <p class="venue">PLOS Global Public Health 5(6): e0004828</p>
+            <p class="links"><a href="https://doi.org/10.1371/journal.pgph.0004828" target="_blank">DOI ↗</a></p>
+          </div>
+        </div>
+
+        <!-- Copy a .pub block for each new paper -->
+
+        <h3 style="font-size:1.15rem; margin:48px 0 4px;">Poster Presentation</h3>
+        <div class="pub">
+          <div class="year">2025</div>
+          <div>
+            <p class="title">Insights of the Selection Pressure and Mutational Landscape of the HIV-1 VPR Protein</p>
+            <p class="authors"><b>Shakib MMH</b>, Karim R, Hasan Z</p>
+            <p class="venue">International Conference on Life Sciences (ICLS 2025), Sylhet, Bangladesh, October 2025</p>
+          </div>
+        </div>
+
+        <p style="margin-top:28px"><a href="https://scholar.google.com/citations?user=jRqlrLIAAAAJ&hl=en" target="_blank">See all on Google Scholar →</a></p>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills">
+      <div class="wrap">
+        <p class="eyebrow">05 / skills</p>
+        <h2>Skills &amp; Tools</h2>
+        <div class="grid three">
+          <div class="card skill-group">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/></svg></div>
+            <h3>Wet Lab</h3>
+            <div class="tags">
+              <span class="tag">Nucleic acid extraction</span><span class="tag">DNA &amp; RNA isolation</span>
+              <span class="tag">DNA quantification</span><span class="tag">PCR</span><span class="tag">qPCR</span>
+              <span class="tag">Gel electrophoresis</span><span class="tag">UV spectrophotometry</span>
+              <span class="tag">Basic immunology &amp; microbiology</span>
+            </div>
+          </div>
+          <div class="card skill-group">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
+            <h3>Bioinformatics &amp; Data</h3>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">R</span><span class="tag">Machine learning</span>
+              <span class="tag">Deep learning</span><span class="tag">Primer design</span><span class="tag">Molecular docking</span>
+              <span class="tag">MEGA</span><span class="tag">Statistics (SPSS, R)</span>
+            </div>
+          </div>
+          <div class="card skill-group">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+            <h3>Visualization &amp; Software</h3>
+            <div class="tags">
+              <span class="tag">GraphPad Prism</span><span class="tag">RStudio</span><span class="tag">Microsoft 365</span>
+              <span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Premiere Pro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LEADERSHIP ===================== -->
+    <section id="leadership" class="soft">
+      <div class="wrap">
+        <p class="eyebrow">06 / leadership &amp; teamwork</p>
+        <h2>Leadership</h2>
+        <div class="grid two">
+          <div class="timeline">
+            <div class="t-item"><p class="meta">2024 – 2025</p><h3>General Secretary</h3><p>BMB Society, SUST</p></div>
+            <div class="t-item"><p class="meta">2023 – 2024</p><h3>Senior Vice President</h3><p>Barisal Divisional Student Association, SUST</p></div>
+            <div class="t-item"><p class="meta">2023</p><h3>Organizing Committee Member</h3><p>1st BMB Symposium: Molecules of Life, SUST</p></div>
+          </div>
+          <div class="timeline">
+            <div class="t-item"><p class="meta">2021 – 2022</p><h3>Cultural Secretary</h3><p>Barisal Divisional Student Association, SUST</p></div>
+            <div class="t-item"><p class="meta">2021 – 2022</p><h3>Executive Member</h3><p>Graduation Development Goal (GDN), SUST</p></div>
+            <div class="t-item"><p class="meta">2020 – 2022</p><h3>Campus Ambassador</h3><p>Excellence Bangladesh, SUST</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact">
+      <div class="wrap">
+        <p class="eyebrow">07 / contact</p>
+        <h2>Let's connect</h2>
+        <p>I'm open to research collaborations, graduate opportunities and conversations about bioinformatics, transcriptomics and molecular biology.</p>
+        <a href="mailto:shakibacademic@gmail.com" class="btn primary">shakibacademic@gmail.com</a>
+        <div class="socials">
+          <a href="https://scholar.google.com/citations?user=jRqlrLIAAAAJ&hl=en" target="_blank">Google Scholar</a>
+          <a href="https://orcid.org/0009-0001-2917-0324" target="_blank">ORCID</a>
+          <a href="https://www.linkedin.com/in/monjurul-haq-shakib-4610891a9" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Md. Monjurul Haq Shakib · Sylhet, Bangladesh
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Animated DNA double helix divider
+    (function () {
+      const svg = document.getElementById("helix");
+      const NS = "http://www.w3.org/2000/svg";
+      const W = 1200, H = 70, mid = H / 2, amp = 22, waves = 6, rungs = 60;
+      const s1 = document.createElementNS(NS, "path");
+      const s2 = document.createElementNS(NS, "path");
+      const g = document.createElementNS(NS, "g");
+      s1.setAttribute("stroke", "#0b1220");
+      s2.setAttribute("stroke", "#38bdf8");
+      [s1, s2].forEach(p => { p.setAttribute("fill", "none"); p.setAttribute("stroke-width", "2"); });
+      svg.append(g, s1, s2);
+      const lines = [];
+      for (let i = 0; i < rungs; i++) {
+        const l = document.createElementNS(NS, "line");
+        l.setAttribute("stroke", "#94a3b8");
+        l.setAttribute("stroke-width", "1.4");
+        g.appendChild(l); lines.push(l);
+      }
+      function draw(phase) {
+        let d1 = "", d2 = "";
+        for (let x = 0; x <= W; x += 6) {
+          const a = (x / W) * waves * 2 * Math.PI + phase;
+          d1 += (x ? "L" : "M") + x + " " + (mid + amp * Math.sin(a)).toFixed(1);
+          d2 += (x ? "L" : "M") + x + " " + (mid - amp * Math.sin(a)).toFixed(1);
+        }
+        s1.setAttribute("d", d1); s2.setAttribute("d", d2);
+        lines.forEach((l, i) => {
+          const x = (i + 0.5) * (W / rungs);
+          const a = (x / W) * waves * 2 * Math.PI + phase;
+          const y = amp * Math.sin(a);
+          l.setAttribute("x1", x); l.setAttribute("x2", x);
+          l.setAttribute("y1", mid + y); l.setAttribute("y2", mid - y);
+          l.setAttribute("opacity", (0.25 + 0.55 * Math.abs(Math.cos(a))).toFixed(2));
+        });
+      }
+      const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (still) { draw(0); return; }
+      let t = 0;
+      (function loop() { t += 0.012; draw(t); requestAnimationFrame(loop); })();
+    })();
+  </script>
+</body>
+</html>
